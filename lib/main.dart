@@ -50,7 +50,6 @@ class _KhayaHomeState extends State<KhayaHome> {
   Timer? _timer;
   Map<String, dynamic>? _payload;
   String? _error;
-  bool _loading = true;
   int _selectedIndex = 0;
   DateTime? _lastSuccessfulFetch;
 
@@ -104,14 +103,12 @@ class _KhayaHomeState extends State<KhayaHome> {
       setState(() {
         _payload = decoded;
         _error = null;
-        _loading = false;
         _lastSuccessfulFetch = DateTime.now();
       });
     } catch (e) {
       if (!mounted) return;
       setState(() {
         _error = 'Backend unreachable';
-        _loading = false;
       });
     }
   }
