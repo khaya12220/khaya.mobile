@@ -1,13 +1,13 @@
-﻿import 'dart:async';
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-// KHAYA MOBILE â€” REAL DATA ONLY
+// KHAYA MOBILE — REAL DATA ONLY
 // The app reads the live KHAYA API. It never invents balance, trades,
 // prices, P/L, signals, or connection states.
 
-const String defaultApiUrl = 'http://';
+const String defaultApiUrl = 'http://10.223.173.27:8000';
 const Duration pollInterval = Duration(seconds: 3);
 
 void main() {
@@ -498,7 +498,7 @@ class _KhayaHomeState extends State<KhayaHome> {
             const SizedBox(height: 12),
             _line('Polling', 'Every 3 seconds'),
             _line('Last successful fetch',
-                _lastSuccessfulFetch?.toLocal().toString() ?? 'â€”'),
+                _lastSuccessfulFetch?.toLocal().toString() ?? '—'),
             _line('API status', _apiConnected ? 'CONNECTED' : 'OFFLINE',
                 _apiConnected),
             if (_error != null)
@@ -672,13 +672,13 @@ class _KhayaHomeState extends State<KhayaHome> {
   }
 
   String _display(dynamic value) {
-    if (value == null) return 'â€”';
+    if (value == null) return '—';
     if (value is bool) return value ? 'YES' : 'NO';
     return value.toString();
   }
 
   String _number(dynamic value) {
-    if (value == null) return 'â€”';
+    if (value == null) return '—';
     if (value is num) return value.toStringAsFixed(2);
     return value.toString();
   }
